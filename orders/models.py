@@ -3,7 +3,7 @@ import uuid
 
 class Product(models.Model):
     """
-        Products Related Fields 
+        Products Related Field
     """
     product_name    = models.CharField(max_length=200, unique=True)
     description     = models.TextField(max_length=500, blank=True)
