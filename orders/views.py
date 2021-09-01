@@ -62,4 +62,4 @@ class OrderDetailsView(APIView):
     def delete(self, request, order_number, format=None):
         order = self.get_objects(order_number)
         order.delete()
-        return Response(status.HTTP_204_NO_CONTENT)
+        return Response({"message" : "order is delete"}, status.HTTP_204_NO_CONTENT)
