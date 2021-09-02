@@ -31,7 +31,7 @@ class OrderItem(models.Model):
     """
     item_name       = models.CharField(max_length=200, unique=True)
     orders           = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="orders")
-    description     = models.TextField(max_length=500, blank=True)
+    description     = models.TextField(max_length=500, blank=True)  
     price           = models.IntegerField()
     stock           = models.IntegerField()
     created_date    = models.DateTimeField(auto_now_add=True)
