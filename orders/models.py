@@ -1,20 +1,6 @@
 from django.db import models
 import uuid
 
-class Product(models.Model):
-    """
-        Products Related Field
-    """
-    product_name    = models.CharField(max_length=200, unique=True)
-    description     = models.TextField(max_length=500, blank=True)
-    price           = models.IntegerField()
-    stock           = models.IntegerField()
-    created_date    = models.DateTimeField(auto_now_add=True)
-    modified_date   = models.DateTimeField(auto_now=True)
-
-
-    def __str__(self):
-        return self.product_name
 
 class Order(models.Model):
     """
@@ -38,3 +24,19 @@ class Order(models.Model):
         return self.order_number
 
 
+
+class OrderItem(models.Model):
+    """
+        Products Related 
+    """
+    item_name       = models.CharField(max_length=200, unique=True)
+    orders           = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="orders")
+    description     = models.TextField(max_length=500, blank=True)
+    price           = models.IntegerField()
+    stock           = models.IntegerField()
+    created_date    = models.DateTimeField(auto_now_add=True)
+    modified_date   = models.DateTimeField(auto_now=True)
+    
+
+    def __str__(self):
+        return self.item_name
